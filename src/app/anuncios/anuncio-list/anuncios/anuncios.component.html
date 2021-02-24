@@ -1,0 +1,9 @@
+<p class="text-center text-muted" *ngIf="!anuncios.length"></p>
+<ol class="list-unstyled">
+  <li class="row" *ngFor="let cols of rows">
+    <div *ngFor="let anuncio of cols" class="col-3">
+      <app-anuncio [anuncio]=anuncio ></app-anuncio>
+    </div>
+  </li>
+</ol>
+

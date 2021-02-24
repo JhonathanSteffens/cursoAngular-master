@@ -1,0 +1,30 @@
+<div class="container">
+  <form [formGroup]="anuncioForm" class="row" (submit)="salvarAnuncio()">
+    <div class="col-6 text-center">
+      <textarea
+        formControlName="url"
+        class="form-control"
+        placeholder="Url Imagem">
+      </textarea>
+      <app-vmessage *ngIf="anuncioForm.get('url')?.errors?.minlength" [text]="'Url deve conter no mínimo 10 caracteres'"></app-vmessage>
+    </div>
+    <div class="col-6">
+      <textarea
+              formControlName="titulo"
+              class="form-control"
+              placeholder="Título">
+      </textarea>
+      <app-vmessage *ngIf="anuncioForm.get('titulo')?.errors?.minlength || anuncioForm.get('titulo')?.errors?.maxlength" [text]="'O título deve conter no mínimo 3 caracteres e no máximo 50 caracteres'"></app-vmessage>
+      <textarea
+        formControlName="mensagem"
+        class="form-control"
+        placeholder="Mensagem">
+      </textarea>
+      <app-vmessage *ngIf="anuncioForm.get('mensagem')?.errors?.minlength || anuncioForm.get('mensagem')?.errors?.maxlength" [text]="'A mensagem deve conter no mínimo 3 caracteres e no máximo 300 caracteres'"></app-vmessage>
+    </div>
+    <button [disabled]="anuncioForm.invalid" type="submit" class="btn btn-primary btn-block mb-5">
+      Salvar
+    </button>
+    <a href="a/list" class="btn btn-secondary mt-3">Cancelar</a>
+  </form>
+</div>
